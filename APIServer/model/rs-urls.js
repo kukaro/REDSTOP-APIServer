@@ -10,9 +10,9 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-this.selectOne = (id, pw, callback) => {
-    var sql = 'select * from rs_user where username = ? and password = ?';
-    connection.query(sql, [id, pw], (err, rows, fields) => {
+this.selectOne = (projectId, username, callback) => {
+    var sql = 'select * from rs_' + username + '_urls where project_id = ?';
+    connection.query(sql, [projectId], (err, rows, fields) => {
         if (!err) {
             callback(rows)
         } else {

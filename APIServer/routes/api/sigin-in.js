@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var rsUser = require('../../model/rs-user');
 
-router.get('/:id/:pw', function (req, res, next) {
-    var id = req.params.id;
-    var pw = req.params.pw;
-    var json = {id, pw};
-    console.log(id,pw)
-    rsUser.selectOne(id,pw,(rows)=>{
-        console.log(rows);
+router.get('/:username/:password', function (req, res, next) {
+    var username = req.params.username;
+    var password = req.params.password;
+    var json = {username, password};
+    // console.log(username, password);
+    rsUser.selectOne(username, password, (rows) => {
+        json['success'] = true;
+        console.log(json);
         res.send(json);
     });
 });
