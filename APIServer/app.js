@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var apiHeaderRouter = require('./routes/api/header');
 var apiListRouter = require('./routes/api/apiList');
 var apiResponseTimeRouter = require('./routes/api/response-time');
+var apiSignIn = require('./routes/api/sigin-in');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/users', usersRouter);
 app.use('/api/header', apiHeaderRouter);
 app.use('/api/apiList', apiListRouter);
 app.use('/api/response-time', apiResponseTimeRouter);
+app.use('/api/v1/sign-in/:id/:pw', apiSignIn);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
