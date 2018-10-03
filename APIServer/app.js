@@ -30,7 +30,7 @@ app.use('/users', usersRouter);
 app.use('/api/header', apiHeaderRouter);
 app.use('/api/apiList', apiListRouter);
 app.use('/api/response-time', apiResponseTimeRouter);
-app.use('/api/v1/sign-in/:id/:pw', apiSignIn);
+app.use('/api/v1/sign-in/', apiSignIn);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
