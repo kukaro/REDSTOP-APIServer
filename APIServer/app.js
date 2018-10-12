@@ -13,6 +13,9 @@ var apiResponseTimeRouter = require('./routes/api/response-time');
 var apiSignIn = require('./routes/api/sigin-in');
 var apiUrls = require('./routes/api/urls');
 var apiScenarios = require('./routes/api/scenarios');
+var apiLatency = require('./routes/api/latency');
+var apiError = require('./routes/api/error');
+var apiAvgTime = require('./routes/api/avgTime');
 
 var app = express();
 
@@ -35,6 +38,9 @@ app.use('/api/response-time', apiResponseTimeRouter);
 app.use('/api/v1/sign-in/', apiSignIn);
 app.use('/api/v1/urls/', apiUrls);
 app.use('/api/v1/scenarios', apiScenarios);
+app.use('/api/v1/latency',apiLatency);
+app.use('/api/v1/error', apiError);
+app.use('/api/v1/avgtime', apiAvgTime);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
