@@ -5,7 +5,7 @@ const router = express.Router();
 const apiSignIn = require('./sigin-in');
 const apiUrls = require('./urls');
 const apiScenarios = require('./scenarios');
-const avgtime = require('./avgtime');
+const avgtime = require('./avgTime');
 const latency = require('./latency');
 const error = require('./error');
 
