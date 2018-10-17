@@ -57,7 +57,7 @@ app.use('/api/v1/scenarios', apiScenarios);
 app.use('/api/v1/latency', apiLatency);
 app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
-app.use('/api/v1/send-scenario', apiScenarios);
+app.use('/api/v1/send-scenario', apiSendScenario);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
