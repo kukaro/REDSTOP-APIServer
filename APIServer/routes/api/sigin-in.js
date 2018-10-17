@@ -8,7 +8,6 @@ router.get('/:username/:password', function (req, res, next) {
     var json = {username, password};
     // console.log(username, password);
     rsUser.selectOne(username, password, (rows) => {
-        console.log(rows.length);
         if (rows.length == 0) {
             json['success'] = false;
         } else {
