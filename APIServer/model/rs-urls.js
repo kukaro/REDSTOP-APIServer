@@ -1,8 +1,7 @@
 var mysql = require('mysql');
 const conf = require('../conf/conf');
 
-var connection = mysql.createConnection(conf);
-
+var connection = mysql.createConnection(conf.mysqlConf);
 
 connection.connect();
 
