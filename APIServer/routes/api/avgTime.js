@@ -23,7 +23,6 @@ router.get('/:pid', function(req, res) {
     influx.query(`
     select MEAN("responsetime") from testresult
   `).then(result => {
-        // console.log(result[0].mean)
         json['avgtime']=result[0].mean
         res.status(200).send(json)
     }).catch(err => {

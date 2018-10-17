@@ -1,0 +1,9 @@
+[0mGET /api/v1/totalapis/1 [33m404 [0m19.796 ms - 1214[0m
+[0mGET /favicon.ico [33m404 [0m0.798 ms - 1214[0m
+[0mGET /api/v1/latency/1 [32m200 [0m20.847 ms - 2[0m
+[0mGET /api/v1/error/1 [32m200 [0m15.161 ms - 2[0m
+[0mGET /api [33m404 [0m0.833 ms - 1214[0m
+[0mGET /api/v1/avgtime/1 [31m500 [0m16.235 ms - 251[0m
+[0mGET /api/v1/avgtime/1 [32m200 [0m18.859 ms - 30[0m
+[0mGET /api/v1/error/1 [32m200 [0m18.734 ms - 746[0m
+[0mGET /api/v1/latency/1 [32m200 [0m13.992 ms - 949[0m
