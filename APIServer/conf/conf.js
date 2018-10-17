@@ -5,5 +5,3 @@ const password = '123redstop456';
 const database = 'mydb';
 
 module.exports = {host,port,user,password, database};
-
-this.logDir = 'log';

@@ -22,6 +22,7 @@ var apiError = require('./routes/api/error');
 var apiAvgTime = require('./routes/api/avgTime');
 
 var app = express();
+var logDir = 'log';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,12 +35,12 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-if (!fs.existsSync(conf.logDir)) {
-    fs.mkdirSync(conf.logDir);
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
 }
 app.use(logger({
     format: 'dev',
-    stream: fs.createWriteStream(conf.logDir + '/app.log', {'flags': 'w'})
+    stream: fs.createWriteStream(logDir + '/app.log', {'flags': 'w'})
 }));
 
 app.use('/', indexRouter);
