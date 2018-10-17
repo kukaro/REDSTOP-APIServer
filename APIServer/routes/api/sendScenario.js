@@ -17,7 +17,7 @@ router.post('/:uid', function (req, res) {
 });
 
 function makeTree(jsonData){
-    console.log(returnJson);
+    console.log(jsonData);
     let returnJson = {};
     let q = queue();
     console.log(returnJson);
