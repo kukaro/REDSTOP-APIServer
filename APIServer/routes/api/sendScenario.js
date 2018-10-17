@@ -14,27 +14,15 @@ router.post('/:uid', function (req, res) {
     // var jsonKey = Object.keys(jsonData);
     // console.log(jsonData);
     // console.log(jsonKey);
-    makeTree(jsonData);
+    console.log(jsonData.block.statement._attributes)
+    dfs(jsonData);
 });
 
-function makeTree(jsonData){
-    console.log('ENTER MAKE TREE');
-    console.log(jsonData);
+function dfs(jsonData){
+    console.log('START BFS');
     let returnJson = {};
-    let q = queue();
-    q.push(jsonData);
-    while(true){
-        if(DEBUG==1){
-            break;
-        }
-        let tmp = q.pop();
-        let type = tmp['block']['_attributes']['type'];
-        let text = tmp['block']['field']['_text'];
-        console.log(tmp['block']['field']['_attributes']);
-        DEBUG++;
-    }
-    console.log(returnJson);
-    console.log('LEAVE MAKE TREE');
+    // dfs(jsonData['block']['statement'][''])
+    console.log('END BFS');
     return returnJson
 }
 
