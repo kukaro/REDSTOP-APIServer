@@ -2,7 +2,7 @@ var express = require('express');
 var Influx = require('influx');
 const os = require('os');
 var router = express.Router();
-const conf = require('../conf/conf');
+const conf = require('../../conf/conf');
 
 const influx = new Influx.InfluxDB(conf.influxConf);
 
