@@ -2,14 +2,9 @@ var express = require('express');
 var Influx = require('influx');
 const os = require('os');
 var router = express.Router();
+const conf = require('../conf/conf');
 
-const influx = new Influx.InfluxDB({
-    database: 'redstop',
-    host: 'localhost',
-    port: 8086
-    //  username: 'root',
-    // password: 'root',
-})
+const influx = new Influx.InfluxDB(conf.influxConf);
 
 router.get('/:pid', function(req, res) {
     var json = {}

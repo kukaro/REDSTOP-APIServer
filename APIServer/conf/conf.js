@@ -9,6 +9,10 @@ const mysqlConf = {host, port, user, password, database};
 
 //influx db conf
 const database = 'redstop';
-const host =  'localhost';
+const host = 'localhost';
 const port = 8086;
-module.exports = {mysqlConf};
+
+const influxConf = {database, host, port};
+
+//exports
+module.exports = {mysqlConf, influxConf};
