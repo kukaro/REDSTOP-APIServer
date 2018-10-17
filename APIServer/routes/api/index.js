@@ -8,6 +8,7 @@ const apiScenarios = require('./scenarios');
 const avgtime = require('./avgTime');
 const latency = require('./latency');
 const error = require('./error');
+const hooking = require('./hooking');
 
 
 router.use('/apitest',apitest);
@@ -18,6 +19,7 @@ router.use('/error',error);
 router.use('/sign-in/', apiSignIn);
 router.use('/urls/', apiUrls);
 router.use('/scenarios', apiScenarios);
+router.use('/hooking',hooking);
 
 router.get('/', (req, res) => {
     res.status(200).send({
