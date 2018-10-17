@@ -18,6 +18,7 @@ router.post('/:uid', function (req, res) {
 });
 
 function makeTree(jsonData){
+    console.log('ENTER MAKE TREE');
     console.log(jsonData);
     let returnJson = {};
     let q = queue();
@@ -31,6 +32,7 @@ function makeTree(jsonData){
         DEBUG++;
     }
     console.log(returnJson);
+    console.log('LEAVE MAKE TREE');
     return returnJson
 }
 
