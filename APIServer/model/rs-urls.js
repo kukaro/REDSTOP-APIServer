@@ -3,6 +3,7 @@ const conf = require('conf');
 
 var connection = mysql.createConnection(conf);
 
+
 connection.connect();
 
 this.selectOne = (projectId, username, callback) => {
