@@ -28,7 +28,9 @@ function makeTree(jsonData){
             break;
         }
         let tmp = q.pop();
-        console.log(tmp);
+        let type = tmp['block']['_attributes']['type'];
+        let text = tmp['block']['field']['_text'];
+        console.log(tmp['block']['field']['_attributes']);
         DEBUG++;
     }
     console.log(returnJson);
