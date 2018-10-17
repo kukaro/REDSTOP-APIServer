@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const apitest = require('./apitest');
+const apitest = require('./apitest');
 // const totalapis = require('./totalapis');
 const apiSignIn = require('./sigin-in');
 const apiUrls = require('./urls');
@@ -10,7 +10,7 @@ const latency = require('./latency');
 const error = require('./error');
 
 
-// router.use('/apitest',apitest);
+router.use('/apitest',apitest);
 // router.use('/totalapis',totalapis);
 router.use('/avgtime',avgtime);
 router.use('/latency',latency);
