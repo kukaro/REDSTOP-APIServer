@@ -4,7 +4,7 @@ const os = require('os');
 var router = express.Router();
 
 
-router.get('/:uid', function(req, res) {
+router.post('/:uid', function(req, res) {
     console.log(req)
 });
 
