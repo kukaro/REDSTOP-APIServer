@@ -14,7 +14,9 @@ router.post('/:uid', function (req, res) {
     // var jsonKey = Object.keys(jsonData);
     // console.log(jsonData);
     // console.log(jsonKey);
-    console.log(jsonData.block.statement._attributes)
+    console.log(jsonData.block);
+    console.log(jsonData.block.statement);
+    console.log(jsonData.block.statement._attributes);
     dfs(jsonData);
 });
 
