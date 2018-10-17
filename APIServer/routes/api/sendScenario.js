@@ -9,6 +9,7 @@ router.post('/:uid', function(req, res) {
     var jsonData = convert.xml2json(req.body.data);
     var jsonKey = Object.keys(jsonData);
     console.log(jsonData)
+    console.log(jsonKey)
 });
 
 module.exports = router;
