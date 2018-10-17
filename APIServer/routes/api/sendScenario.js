@@ -6,7 +6,8 @@ var convert = require('xml-js');
 
 
 router.post('/:uid', function(req, res) {
-    var jsonData = convert.xml2json(req.body.data)
+    var jsonData = convert.xml2json(req.body.data);
+    var jsonKey = Object.keys(jsonData);
     console.log(jsonData)
 });
 
