@@ -9,7 +9,7 @@ var mysqlConf = {host, port, user, password, database};
 
 //influx db conf
 var database = 'redstop';
-var host = 'localhost';
+var host = '52.79.135.42';
 var port = 8086;
 
 var influxConf = {database, host, port};
