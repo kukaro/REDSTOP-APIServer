@@ -1,50 +1,60 @@
 var express = require('express');
 var router = express.Router();
-const pool = require('../../conf/dbPool');
+var RDBMS = require('../../model/common');
 
-router.get('/', function(req, res) {
-    // console.log(req.query.method);
-    // console.log(req.query.url);
+// 실제 개발할 때 있을 수 있는 시나리오
+// 1. user 이름 있는지 체크하기
+// 2. 그 user의 모든 project 불러오기
 
-    function getConnection() {
-        return new Promise(function (resolve, reject) {
-            pool.getConnection((err, connection) => {
-                if(err){
-                    reject(err);
-                } else{
-                    resolve(connection);
-                }
-            });
-        });
-    }
-    getConnection().then(function (connection) {
-        //let query = "SELECT count(*) as count FROM api where pid = ?";
-        let insertQuery = 'insert into rs_kukaro_urls set ?';
-        let data = {
-            project_id : 2,
-            url : req.query.url,
-            method : req.query.method,
-            name : "SearchItems"
-        };
-
-        connection.query(insertQuery,data, (err) => {
-            if (err) {
-                res.status(500).send({
-                    stat: "fail",
-                    msg: "query error"
-                });
-                connection.release();
+function verifyUser(username,password){
+    var sql = 'select * from rs_user where username = ? and password = ?';
+    let data = [
+        username, password
+    ];
+    return new Promise(function(resolve, reject){
+        RDBMS.query(sql, data, (rows) => {
+            if (rows.length == 0) {
+                reject('There is no such user');
             } else {
-
-                res.status(201).send({
-                    stat: "success"
-                });
-                connection.release();
+                resolve();
             }
         });
-    }).catch(function (err) {
-        res.status(500).send({ status : "error", error : err});
     });
+}
+function ShowProjects(username){
+    var sql = 'select * from rs_project where owner = ?';
+    let data = [
+        username
+    ];
+    return new Promise(function(resolve, reject){
+        RDBMS.query(sql, data, (rows) => {
+            if (rows.length == 0) {
+                reject('There is no project of this user');
+            } else {
+                resolve(rows);
+            }
+        });
+    });
+}
+
+router.post('/', function(req, res) {
+    var username = req.body.uid;
+    var password = req.body.pw;
+
+    verifyUser(username,password).then(function () {
+        return ShowProjects(username);
+    }).then(function (rows) {
+        res.send({
+            status : "Success",
+            error : rows
+        });
+    })
+        .catch(function (errorMsg) {
+            res.send({
+                status : "Error",
+                error : errorMsg
+            });
+        });
 
 });
 
