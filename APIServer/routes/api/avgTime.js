@@ -1,6 +1,42 @@
+/**
+ * @swagger
+ * tags:
+ * - name: Monitoring
+ *   description: API Monitoring에 관련된 API
+ */
+
+/**
+ * @swagger
+ * /avgtime/{pid}:
+ *   get:
+ *     tags:
+ *     - "Monitoring"
+ *     summary: Returns average response time
+ *     description: "한 Project의 평균 응답 시간을 리턴합니다"
+ *     produces:
+ *     - "application/json"
+ *     parameters:
+ *     - name: "pid"
+ *       in: "path"
+ *       description: "Project ID"
+ *       required: true
+ *       type: "integer"
+ *       format: "int64"
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *         schema:
+ *           type: object
+ *           properties:
+ *             avgtime:
+ *               type: "number"
+ *               format: "double"
+ *       500:
+ *         description : Database Error
+ */
+
 var express = require('express');
 var Influx = require('influx');
-const os = require('os');
 var router = express.Router();
 const conf = require('../../conf/conf');
 

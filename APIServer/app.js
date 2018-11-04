@@ -25,6 +25,7 @@ var apiSendScenario = require('./routes/api/sendScenario');
 var app = express();
 var logDir = 'log';
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -58,6 +59,25 @@ app.use('/api/v1/latency', apiLatency);
 app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
+
+// app.use('/swagger-ui', express.static(path.join(__dirname, './node_modules/swagger-ui-dist')));
+// app.use('/v1/swagger.json', function(req, res) {
+//     res.json(require('./swagger.json'));
+// });
+
+
+
+
+// App Root Path
+global.reqlib = require('app-root-path').require;
+
+// Global Swagger
+global.AVSwagger = reqlib('AVSwagger');
+
+// Swagger API 명세를 볼수 있는 URL을 맵핑
+app.use('/api-docs', AVSwagger.swaggerUi.serve, AVSwagger.swaggerUi.setup(AVSwagger.swaggerSpec));
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
