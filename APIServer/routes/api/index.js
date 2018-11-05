@@ -11,6 +11,7 @@ const error = require('./error');
 const hooking = require('./hooking');
 const treeinit = require('./treeinit');
 const promise_test = require('./promise-test');
+const imp = require('./import');
 
 router.use('/apitest',apitest);
 // router.use('/totalapis',totalapis);
@@ -23,6 +24,7 @@ router.use('/scenarios', apiScenarios);
 router.use('/hooking',hooking);
 router.use('/treeinit',treeinit);
 router.use('/promise-test',promise_test);
+router.use('/import',imp);
 
 router.get('/', (req, res) => {
     res.status(200).send({
