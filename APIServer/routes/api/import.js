@@ -73,7 +73,7 @@ function insertData(apis){
                 }
             });
         }
-        resolve('Sucess to insert data into DB');
+        resolve('Success to insert data into DB');
     });
 }
 
