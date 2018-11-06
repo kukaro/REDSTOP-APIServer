@@ -36,11 +36,11 @@ function parsingInfo2(info) {
     let apis = [];
 
     for(let i=0;i<arr1.length;i++){
-        console.log("------------" + i + "--------------");
+        // console.log("------------" + i + "--------------");
         let temp = Object.keys(info["paths"][arr1[i]]);
         for(let j=0;j<temp.length;j++){
-            console.log("-@-@-@-@-@-" + j + "-@-@-@-@-");
-            console.log(temp[j]);
+            // console.log("-@-@-@-@-@-" + j + "-@-@-@-@-");
+            // console.log(temp[j]);
             apis.push({"url": arr1[i], "method": temp[j]});
         }
     }
@@ -89,33 +89,16 @@ router.put('/', function (req, res) {
     }).then(function (result) {
         return insertData(result);
     }).then(function (msg) {
-        res.status(200).send({
+        res.status(201).send({
+            success: true,
+            msg : msg
+        })
+    }).catch(function (msg) {
+        res.status(500).send({
+            success: false,
             msg : msg
         })
     })
-    //     .then(function (result) {
-    //     return insertData(result);
-    // }).then(function (rows) {
-    //
-    // })
-    // }).catch(function (e) {
-    //     res.status(500).send({
-    //         msg: e
-    //     })
-
-    // getSwaggerJSON(baseurl).then(() => {
-    //     return parsingJSON();
-    // })
-    //     .then(() => {
-    //         return insertData();
-    //     })
-    // getSwaggerJSON(baseurl).then(function (response) {
-    //
-    // })
-   // res.status(200).send({
-   //     msg: "Success",
-   //     yourdata: req.body["swaggerURL"]
-   // })
 });
 
 module.exports = router;
