@@ -22,6 +22,8 @@ var apiError = require('./routes/api/error');
 var apiAvgTime = require('./routes/api/avgTime');
 var apiSendScenario = require('./routes/api/sendScenario');
 
+var hooking = require('./routes/api/hooking');
+
 var app = express();
 var logDir = 'log';
 
@@ -59,6 +61,8 @@ app.use('/api/v1/latency', apiLatency);
 app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
+
+app.use('/api/hooking', hooking);
 
 // app.use('/swagger-ui', express.static(path.join(__dirname, './node_modules/swagger-ui-dist')));
 // app.use('/v1/swagger.json', function(req, res) {
