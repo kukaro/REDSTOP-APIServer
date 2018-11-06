@@ -8,8 +8,9 @@ connection.connect();
 this.query = (sql, data , callback) => {
     connection.query(sql, data, (err, rows, fields) => {
         if (!err) {
-            callback(rows)
+            callback(rows);
         } else {
+            callback(err);
             console.log(err)
         }
     })

@@ -52,20 +52,7 @@ function parsingInfo2(info) {
 }
 function insertData(apis){
     let insertQuery = 'insert into rs_kukaro_urls set ?';
-    // let data = [
-    //     {
-    //     project_id : 2,
-    //     url : apis[1].url,
-    //     method : apis[1].method,
-    //     name : "DefaultName"
-    //     },
-    //     {
-    //     project_id : 2,
-    //     url : apis[2].url,
-    //     method : apis[2].method,
-    //     name : "DefaultName"
-    //     }
-    //     ];
+
     let data = [];
     for(let i=0;i<apis.length;i++){
         let minijson = {};
@@ -76,11 +63,9 @@ function insertData(apis){
 
         data.push(minijson);
     }
-    console.log("33333333333333");
-    // console.log(data);
 
     return new Promise(function(resolve, reject){
-        console.log(data);
+       // console.log(data);
         for(let i=0;i<data.length;i++){
             RDBMS.query(insertQuery, data[i], (rows) => {
                 if (rows.length == 0) {
