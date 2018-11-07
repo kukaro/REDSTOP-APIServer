@@ -35,6 +35,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     );
     alter table rs_${projectId}_${scenarioName}_block add constraint pk_rs${projectId}${scenarioName}_id primary key (id);
     alter table rs_${projectId}_${scenarioName}_block add constraint fk_rs${projectId}${scenarioName}urlmehod_rs${owner}urlsurlmethond foreign key rs_${projectId}_${scenarioName}_block(url,method) references rs_${owner}_urls(url,method);
+    delete from rs_${projectId}_${scenarioName}_block;
     `;
     Database.query(sql, (row) => {
         // res.send(row);
