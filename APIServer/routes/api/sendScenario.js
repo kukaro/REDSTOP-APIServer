@@ -24,7 +24,8 @@ router.post('/:uid', function (req, res) {
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = {params: req.params, body: req.body};
     let {owner, projectId, scenarioName} = req.params;
-    var sql = `create table if not exists rs_${projectId}_${scenarioName}_block(
+    let sql = `
+        create table if not exists rs_${projectId}_${scenarioName}_block(
         id varchar(100) not null,
         name varchar(300) not null,
         type set ('group','case','api') not null,
@@ -36,7 +37,10 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     alter table rs_${projectId}_${scenarioName}_block add constraint fk_rs${projectId}${scenarioName}urlmehod_rs${owner}urlsurlmethond foreign key rs_${projectId}_${scenarioName}_block(url,method) references rs_${owner}_urls(url,method);
     `;
     Database.query(sql,(row)=>{
-        res.send(row);
+        // res.send(row);
+        // for()
+        // Database.query()
+        res.send(req.body);
     });
 });
 
