@@ -13,4 +13,10 @@ router.get('/:username', function (req, res, next) {
     });
 });
 
+router.put('/:owner/:isInit', function (req, res, next) {
+    rsProject.updateIsInt(req.params.owner, req.params.isInit, (rows) => {
+        res.send(rows);
+    })
+})
+
 module.exports = router;
