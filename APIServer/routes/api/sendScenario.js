@@ -41,7 +41,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
         // res.send(row);
 
         for (let atom of req.body.data) {
-            res.send(atom)
+            // res.send(atom)
             if (atom.type === 'group' || atom.type === 'case') {
                 sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId) values(?,?,?,?)`;
                 Database.query(sql, [
