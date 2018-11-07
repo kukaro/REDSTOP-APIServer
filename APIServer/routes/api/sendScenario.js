@@ -24,7 +24,7 @@ router.post('/:uid', function (req, res) {
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = {params: req.params, body: req.body};
     let {owner, projectId, scenarioName} = req.params;
-    var sql = `create table if not exists rs_${projectId}_${scenarioName}_block(
+    var sql = `create table rs_${projectId}_${scenarioName}_block(
         id varchar(100) not null,
         name varchar(300) not null,
         type set ('group','case','api') not null,
