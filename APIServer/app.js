@@ -21,6 +21,7 @@ var apiLatency = require('./routes/api/latency');
 var apiError = require('./routes/api/error');
 var apiAvgTime = require('./routes/api/avgTime');
 var apiSendScenario = require('./routes/api/sendScenario');
+var apiProject = require('./routes/api/project');
 
 var hooking = require('./routes/api/hooking');
 
@@ -61,6 +62,7 @@ app.use('/api/v1/latency', apiLatency);
 app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
+app.use('/api/v1/project', apiProject);
 
 app.use('/api/hooking', hooking);
 
