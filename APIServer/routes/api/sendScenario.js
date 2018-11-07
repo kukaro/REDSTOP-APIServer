@@ -35,37 +35,38 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     );
     alter table rs_${projectId}_${scenarioName}_block add constraint pk_rs${projectId}${scenarioName}_id primary key (id);
     alter table rs_${projectId}_${scenarioName}_block add constraint fk_rs${projectId}${scenarioName}urlmehod_rs${owner}urlsurlmethond foreign key rs_${projectId}_${scenarioName}_block(url,method) references rs_${owner}_urls(url,method);
-    delete from rs_${projectId}_${scenarioName}_block;
     `;
     Database.query(sql, (row) => {
         // res.send(row);
+        sql = `delete from rs_${projectId}_${scenarioName}_block`;
+        Database.query(sql,(row)=>{
+            for (let atom of req.body.data) {
+                // res.send(atom)
+                if (atom.type === 'group' || atom.type === 'case') {
+                    sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId) values(?,?,?,?)`;
+                    Database.query(sql, [
+                        atom.type,
+                        atom.name,
+                        atom.id,
+                        atom.parentBlockId
+                    ], (row) => {
 
-        for (let atom of req.body.data) {
-            // res.send(atom)
-            if (atom.type === 'group' || atom.type === 'case') {
-                sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId) values(?,?,?,?)`;
-                Database.query(sql, [
-                    atom.type,
-                    atom.name,
-                    atom.id,
-                    atom.parentBlockId
-                ], (row) => {
+                    })
+                } else if (atom.type === 'api') {
+                    sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?)`;
+                    Database.query(sql, [
+                        atom.type,
+                        atom.name,
+                        atom.id,
+                        atom.parentBlockId,
+                        atom.url,
+                        atom.method
+                    ], (row) => {
 
-                })
-            } else if (atom.type === 'api') {
-                sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?)`;
-                Database.query(sql, [
-                    atom.type,
-                    atom.name,
-                    atom.id,
-                    atom.parentBlockId,
-                    atom.url,
-                    atom.method
-                ], (row) => {
-
-                })
+                    })
+                }
             }
-        }
+        });
         // Database.query()
         // res.send(req.body);
     });
