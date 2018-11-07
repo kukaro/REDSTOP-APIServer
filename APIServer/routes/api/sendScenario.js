@@ -21,6 +21,14 @@ router.post('/:uid', function (req, res) {
     dfs(jsonData);
 });
 
+//TODO 이거 owner로 부를 수 있는데 귀찮으니 생략하는 겁니다.
+router.get('/:owner/:projectId/:scenarioName', function (req, res, next) {
+    let sql = `select * from rs_${req.params.projectId}_${req.params.scenarioName}`;
+    Database.query(sql, (row) => {
+        send(row)
+    });
+});
+
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = {params: req.params, body: req.body};
     let {owner, projectId, scenarioName} = req.params;
