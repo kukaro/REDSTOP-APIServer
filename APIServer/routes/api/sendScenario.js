@@ -25,7 +25,7 @@ router.post('/:uid', function (req, res) {
 router.get('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let sql = `select * from rs_${req.params.projectId}_${req.params.scenarioName}`;
     Database.query(sql, (row) => {
-        send(row)
+        res.send(row)
     });
 });
 
