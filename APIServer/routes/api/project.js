@@ -15,7 +15,7 @@ router.get('/:username', function (req, res, next) {
 
 router.put('/:owner/:isInit', function (req, res, next) {
     console.log(req.params)
-    rsProject.updateIsInt(req.params.owner, req.params.isInit, (rows) => {
+    rsProject.updateIsInt(req.params.owner, req.params.isInit=='true'?true:false, (rows) => {
         res.send(rows);
     })
 })
