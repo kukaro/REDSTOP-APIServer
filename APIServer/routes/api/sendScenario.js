@@ -32,7 +32,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
         url varchar(255) default null,
         method varchar(10) default null
     )`;
-    Database.query(sql,data,(row)=>{
+    Database.query(sql,(row)=>{
         res.send(row);
     });
 });
