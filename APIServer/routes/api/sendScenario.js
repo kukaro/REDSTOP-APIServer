@@ -68,7 +68,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
             }
         });
         // Database.query()
-        // res.send(req.body);
+        res.send(req.body.data);
     });
 });
 
