@@ -9,6 +9,7 @@ router.get('/:username', function (req, res, next) {
     rsProject.selectOne(username, (rows) => {
         let data = rows;
         console.log(data);
+        res.send(rows);
     });
 });
 
