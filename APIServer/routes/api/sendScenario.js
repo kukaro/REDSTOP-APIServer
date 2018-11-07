@@ -20,7 +20,7 @@ router.post('/:uid', function (req, res) {
     dfs(jsonData);
 });
 
-router.post('/:owner/:project-id/:scenario-name', function (req, res, next) {
+router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = req.params;
     res.send(test);
 });
