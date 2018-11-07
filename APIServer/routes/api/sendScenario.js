@@ -21,11 +21,11 @@ router.post('/:uid', function (req, res) {
 });
 
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
-    let test = req.params;
+    let test = {params: req.params, body: req.body};
     res.send(test);
 });
 
-function dfs(jsonData){
+function dfs(jsonData) {
     console.log('START BFS');
     let returnJson = {};
     // dfs(jsonData['block']['statement'][''])
