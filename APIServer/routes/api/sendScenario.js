@@ -39,7 +39,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     Database.query(sql, (row) => {
         // res.send(row);
         sql = `delete from rs_${projectId}_${scenarioName}_block`;
-        Database.query(sql,(row)=>{
+        Database.query(sql, (row) => {
             for (let atom of req.body.data) {
                 // res.send(atom)
                 if (atom.type === 'group' || atom.type === 'case') {
@@ -53,7 +53,7 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
 
                     })
                 } else if (atom.type === 'api') {
-                    sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?)`;
+                    sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?,?,?)`;
                     Database.query(sql, [
                         atom.type,
                         atom.name,
