@@ -4,8 +4,9 @@ var port = 3306;
 var user = 'root';
 var password = '123redstop456';
 var database = 'mydb';
+var multipleStatements = true;
 
-var mysqlConf = {host, port, user, password, database};
+var mysqlConf = {host, port, user, password, database, multipleStatements};
 
 //influx db conf
 var database = 'redstop';

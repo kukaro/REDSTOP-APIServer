@@ -24,14 +24,17 @@ router.post('/:uid', function (req, res) {
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = {params: req.params, body: req.body};
     let {owner, projectId, scenarioName} = req.params;
-    var sql = `create table rs_${projectId}_${scenarioName}_block(
+    var sql = `create table if not exists rs_${projectId}_${scenarioName}_block(
         id varchar(100) not null,
         name varchar(300) not null,
         type set ('group','case','api') not null,
         parentBlockId varchar(100) default null, 
         url varchar(255) default null,
         method varchar(10) default null
-    )`;
+    );
+    alter table rs_${projectId}_${scenarioName}_block add constraint pk_rs${projectId}${scenarioName}_id primary key (id);
+    alter table rs_${projectId}_${scenarioName}_block add constraint fk_rs${projectId}${scenarioName}urlmehod_rs${owner}urlsurlmethond foreign key rs_${projectId}_${scenarioName}_block(url,method) references rs_${owner}_urls(url,method);
+    `;
     Database.query(sql,(row)=>{
         res.send(row);
     });
