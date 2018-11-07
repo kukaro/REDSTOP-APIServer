@@ -54,10 +54,9 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
                     })
                 } else if (atom.type === 'api') {
                     sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?,?,?)`;
-                    atom.name = atom.url;
                     Database.query(sql, [
                         atom.type,
-                        atom.name,
+                        atom.url,
                         atom.id,
                         atom.parentBlockId,
                         atom.url,
