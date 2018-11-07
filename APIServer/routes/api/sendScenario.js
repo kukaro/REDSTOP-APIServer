@@ -36,11 +36,35 @@ router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     alter table rs_${projectId}_${scenarioName}_block add constraint pk_rs${projectId}${scenarioName}_id primary key (id);
     alter table rs_${projectId}_${scenarioName}_block add constraint fk_rs${projectId}${scenarioName}urlmehod_rs${owner}urlsurlmethond foreign key rs_${projectId}_${scenarioName}_block(url,method) references rs_${owner}_urls(url,method);
     `;
-    Database.query(sql,(row)=>{
+    Database.query(sql, (row) => {
         // res.send(row);
-        // for()
+        for (let atom in req.body) {
+            if (atom.type === 'group' || atom.type === 'case') {
+                sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId) values(?,?,?,?)`;
+                Database.query(sql, {
+                    type: atom.type,
+                    name: atom.name,
+                    id: atom.id,
+                    parentBlockId: atom.parentBlockId
+                }, (row) => {
+
+                })
+            } else if (atom.type === 'api') {
+                sql = `insert into rs_${projectId}_${scenarioName}_block(type,name,id,parentBlockId,url,method) values(?,?,?,?)`;
+                Database.query(sql, {
+                    type: atom.type,
+                    name: atom.name,
+                    id: atom.id,
+                    parentBlockId: atom.parentBlockId,
+                    url: atom.url,
+                    method: atom.method
+                }, (row) => {
+
+                })
+            }
+        }
         // Database.query()
-        res.send(req.body);
+        // res.send(req.body);
     });
 });
 
