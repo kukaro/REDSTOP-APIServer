@@ -4,6 +4,7 @@ const os = require('os');
 var router = express.Router();
 var convert = require('xml-js');
 var queue = require('queue');
+var Database = require('../../model/common');
 
 var DEBUG = 0;
 
@@ -22,7 +23,18 @@ router.post('/:uid', function (req, res) {
 
 router.post('/:owner/:projectId/:scenarioName', function (req, res, next) {
     let test = {params: req.params, body: req.body};
-    res.send(test);
+    let {owner, projectId, scenarioName} = req.params;
+    var sql = `create table if not exists rs_${projectId}_${scenarioName}_block(
+        id varchar(100) not null,
+        name varchar(300) not null,
+        type set ('group','case','api') not null,
+        parentBlockId varchar(100) default null, 
+        url varchar(255) default null,
+        method varchar(10) default null
+    )`;
+    Database.query(sql,data,(row)=>{
+        res.send(row);
+    });
 });
 
 function dfs(jsonData) {
