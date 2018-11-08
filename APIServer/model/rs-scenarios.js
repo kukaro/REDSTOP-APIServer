@@ -7,7 +7,7 @@ connection.connect();
 
 this.selectOne = (project_id, scenarioName, callback) => {
     var sql = 'select * from rs_' + project_id + '_scenario where scenario_name = ?';
-    connection.query(sql, [scenarioName],(err, rows, fields) => {
+    connection.query(sql, [scenarioName], (err, rows, fields) => {
         if (!err) {
             callback(rows)
         } else {
@@ -34,5 +34,16 @@ this.insert = (projectId, scenarioName, type, iteratePeriod, xml) => {
         } else {
             console.log(err)
         }
-    })
+    });
+};
+
+this.updateXml = (projectId, scenarioName, xml) => {
+    let sql = `update rs_${projectId}_scenario set xml=? where scenarioName = ?`;
+    connection.query(sql, [scenarioName, xml], (err, rows, field) => {
+        if (!err) {
+            callback(rows)
+        } else {
+            console.log(err)
+        }
+    });
 };

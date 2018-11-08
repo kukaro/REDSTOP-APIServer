@@ -19,10 +19,17 @@ router.get('/:username/:scenarioName', function (req, res, next) {
 });
 
 router.post('/:owner/:projectId/:scenarioName/:type/:iteratePeriod', function (req, res, next) {
-    var data = req.params;
+    let data = req.params;
     console.log('scenario test')
     console.log(req.body.data)
     rsScenarios.insert(data.projectId, data.scenarioName, data.type, data.iteratePeriod, req.body.data, (rows) => {
+        res.send(rows)
+    })
+});
+
+router.post('/xml/:owner/:projectId/:scenarioName', function (req, res, next) {
+    let data = req.params;
+    rsScenarios.updateXml(data.projectId,data.scenarioName,(rows)=>{
         res.send(rows)
         console.log(rows)
     })
