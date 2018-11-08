@@ -64,7 +64,7 @@ app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
 app.use('/api/v1/project', apiProject);
-app.use('/api/v1/scenario', apiScenarios);
+app.use('/api/v1/scenario', apiScenario);
 
 app.use('/api/hooking', hooking);
 
