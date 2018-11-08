@@ -29,6 +29,7 @@ router.post('/:owner/:projectId/:scenarioName/:type/:iteratePeriod', function (r
 
 router.post('/xml/:owner/:projectId/:scenarioName', function (req, res, next) {
     let data = req.params;
+    console.log(data);
     rsScenarios.updateXml(data.projectId,data.scenarioName,(rows)=>{
         res.send(rows)
         console.log(rows)
