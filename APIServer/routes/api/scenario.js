@@ -32,7 +32,7 @@ router.post('/xml/:owner/:projectId/:scenarioName', function (req, res, next) {
     console.log('yolo')
     console.log(data);
     console.log(req.body)
-    rsScenarios.updateXml(data.projectId, data.scenarioName, req.body.xml, (rows) => {
+    rsScenarios.updateXml(data.projectId, data.scenarioName, req.body, (rows) => {
         res.send(rows)
         console.log(rows)
     })
