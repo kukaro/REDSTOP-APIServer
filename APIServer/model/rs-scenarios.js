@@ -6,7 +6,7 @@ var connection = mysql.createConnection(conf.mysqlConf);
 connection.connect();
 
 this.selectOne = (project_id, scenarioName, callback) => {
-    var sql = 'select * from rs_' + project_id + '_scenario where = ?';
+    var sql = 'select * from rs_' + project_id + '_scenario where scenario_name = ?';
     connection.query(sql, [scenarioName],(err, rows, fields) => {
         if (!err) {
             callback(rows)
