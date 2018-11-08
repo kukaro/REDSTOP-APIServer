@@ -16,12 +16,13 @@ var apiListRouter = require('./routes/api/apiList');
 var apiResponseTimeRouter = require('./routes/api/response-time');
 var apiSignIn = require('./routes/api/sigin-in');
 var apiUrls = require('./routes/api/urls');
-var apiScenarios = require('./routes/api/scenarios');
+var apiScenarios = require('./routes/api/scenario');
 var apiLatency = require('./routes/api/latency');
 var apiError = require('./routes/api/error');
 var apiAvgTime = require('./routes/api/avgTime');
 var apiSendScenario = require('./routes/api/sendScenario');
 var apiProject = require('./routes/api/project');
+var apiScenario = require('./routes/api/scenario');
 
 var hooking = require('./routes/api/hooking');
 
@@ -63,6 +64,7 @@ app.use('/api/v1/error', apiError);
 app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
 app.use('/api/v1/project', apiProject);
+app.use('/api/v1/scenario', apiScenarios);
 
 app.use('/api/hooking', hooking);
 
