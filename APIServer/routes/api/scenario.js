@@ -13,7 +13,7 @@ router.get('/:username/:scenarioName', function (req, res, next) {
         console.log(data);
         rsScenarios.selectOne(data[0].id, scenarioName, (rows) => {
             console.log(rows);
-            res.send(rows);
+            res.send(rows[0]);
         });
     });
 });
