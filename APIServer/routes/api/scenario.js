@@ -19,6 +19,7 @@ router.get('/:username', function (req, res, next) {
 
 router.post('/:owner/:projectId/:scenarioName/:type/:iteratePeriod/:xml', function (req, res, next) {
     var data = req.params;
+    console.log('scenario test')
     rsScenarios.insert(data.projectId,data.scenarioName,data.type,data.iteratePeriod,data.xml,(rows)=>{
         res.send(rows)
         console.log(rows)
