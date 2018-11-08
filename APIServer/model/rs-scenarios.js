@@ -18,14 +18,17 @@ this.selectOne = (project_id, callback) => {
 
 this.insert = (projectId, scenarioName, type, iteratePeriod, xml) => {
     let sql = null;
+    let data = [];
     if (iteratePeriod === 'default') {
         sql = `insert into rs_${projectId}_scenario(scenario_name,type,xml) 
-        values(${scenarioName},${type},${xml})`;
+        values(?,?,?)`;
+        data = [scenarioName,type,xml];
     } else {
         sql = `insert into rs_${projectId}_scenario(scenario_name,type,iterate_period,xml)
-        values(${scenarioName},${type},${iteratePeriod},${xml})`;
+        values(?,?,?,?)`;
+        data = [scenarioName,type,iteratePeriod,xml];
     }
-    connection.query(sql, (err, rows, field) => {
+    connection.query(sql, data,(err, rows, field) => {
         if (!err) {
             callback(rows)
         } else {
