@@ -21,6 +21,7 @@ router.post('/:owner/:projectId/:scenarioName/:type/:iteratePeriod/:xml', functi
     var data = req.params;
     rsScenarios.insert(data.projectId,data.scenarioName,data.type,data.iteratePeriod,data.xml,(rows)=>{
         res.send(rows)
+        console.log(rows)
     })
 });
 
