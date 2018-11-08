@@ -38,7 +38,7 @@ this.insert = (projectId, scenarioName, type, iteratePeriod, xml, callback) => {
 };
 
 this.updateXml = (projectId, scenarioName, xml, callback) => {
-    let sql = `update rs_${projectId}_scenario set xml=? where scenarioName = ?`;
+    let sql = `update rs_${projectId}_scenario set xml=? where scenario_name = ?`;
     connection.query(sql, [xml, scenarioName], (err, rows, field) => {
         if (!err) {
             callback(rows)
