@@ -16,7 +16,7 @@ this.selectOne = (project_id, scenarioName, callback) => {
     })
 };
 
-this.insert = (projectId, scenarioName, type, iteratePeriod, xml) => {
+this.insert = (projectId, scenarioName, type, iteratePeriod, xml, callback) => {
     let sql = null;
     let data = [];
     if (iteratePeriod === 'default') {
@@ -37,7 +37,7 @@ this.insert = (projectId, scenarioName, type, iteratePeriod, xml) => {
     });
 };
 
-this.updateXml = (projectId, scenarioName, xml) => {
+this.updateXml = (projectId, scenarioName, xml, callback) => {
     let sql = `update rs_${projectId}_scenario set xml=? where scenarioName = ?`;
     connection.query(sql, [xml, scenarioName], (err, rows, field) => {
         if (!err) {
