@@ -5,9 +5,9 @@ var connection = mysql.createConnection(conf.mysqlConf);
 
 connection.connect();
 
-this.selectOne = (project_id, callback) => {
-    var sql = 'select * from rs_' + project_id + '_scenario';
-    connection.query(sql, (err, rows, fields) => {
+this.selectOne = (project_id, scenarioName, callback) => {
+    var sql = 'select * from rs_' + project_id + '_scenario where = ?';
+    connection.query(sql, [scenarioName],(err, rows, fields) => {
         if (!err) {
             callback(rows)
         } else {
@@ -22,13 +22,13 @@ this.insert = (projectId, scenarioName, type, iteratePeriod, xml) => {
     if (iteratePeriod === 'default') {
         sql = `insert into rs_${projectId}_scenario(scenario_name,type,xml) 
         values(?,?,?)`;
-        data = [scenarioName,type,xml];
+        data = [scenarioName, type, xml];
     } else {
         sql = `insert into rs_${projectId}_scenario(scenario_name,type,iterate_period,xml)
         values(?,?,?,?)`;
-        data = [scenarioName,type,iteratePeriod,xml];
+        data = [scenarioName, type, iteratePeriod, xml];
     }
-    connection.query(sql, data,(err, rows, field) => {
+    connection.query(sql, data, (err, rows, field) => {
         if (!err) {
             callback(rows)
         } else {
