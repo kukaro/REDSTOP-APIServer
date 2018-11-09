@@ -47,3 +47,16 @@ this.updateXml = (projectId, scenarioName, xml, callback) => {
         }
     });
 };
+
+// easy 추가
+// 한 프로젝트에 있는 모든 시나리오 리턴
+this.selectAll = (project_id, callback) => {
+    var sql = 'select * from rs_' + project_id + '_scenario';
+    connection.query(sql, (err, rows, fields) => {
+        if (!err) {
+            callback(rows)
+        } else {
+            console.log(err)
+        }
+    })
+};
