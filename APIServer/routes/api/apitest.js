@@ -43,7 +43,13 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                console.log(error);
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result.status = error.response.status;
+                res.status(error.response.status).send({
+                    msg : "에러,",
+                    result : result
+                });
             });
     } else if (method === 'GET') {
         // axios.interceptors.response.use((response) => {
