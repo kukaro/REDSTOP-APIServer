@@ -74,16 +74,22 @@ router.post('/', function (req, res) {
                 };
 
             })
-            .then(function(){
+            .then(function(data){
+                console.log('data 부분임');
+                console.log(data);
                 res.status(200).send({
                     msg : "테스트 성공!",
                     result : result
                 });
             })
             .catch(function (error) {
-                console.log('error로 넘어옴 ㅎㅎ')
-                console.log(Object.keys(error));
-                console.log(error.response)
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result.status = error.response.status;
+                res.status(error.response.status).send({
+                   msg : "에러,",
+                   result : result
+                });
             });
     }
     // res.status(200).send({
