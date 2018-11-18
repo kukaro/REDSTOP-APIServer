@@ -28,8 +28,8 @@ router.post('/', function (req, res) {
             data: data
         })
             .then(function(response) {
-                let endTime = new Date().getTime()
-                let responseTime = endTime - startTime;
+                var endTime = new Date().getTime()
+                var responseTime = endTime - startTime;
                 result = {
                     startTime: startTime,
                     endTime: endTime,
@@ -46,8 +46,8 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                let endTime = new Date().getTime()
-                let responseTime = endTime - startTime;
+                var endTime = new Date().getTime()
+                var responseTime = endTime - startTime;
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
@@ -101,7 +101,7 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                let responseTime = new Date().getTime() - start;
+                var responseTime = new Date().getTime() - start;
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
