@@ -82,7 +82,7 @@ router.post('/', function (req, res) {
             })
             .catch(function (error) {
                 console.log('error로 넘어옴 ㅎㅎ')
-                console.log(error);
+                console.log(error.conf);
             });
     }
     // res.status(200).send({
