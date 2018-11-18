@@ -7,7 +7,7 @@ router.post('/', function (req, res) {
     var url = req.body.url;
     var data = req.body["data"];
     var method = req.body["method"];
-    var startTime = new Date().getTime()
+    var startTime = new Date()
 
     var result = {};
 
@@ -28,8 +28,8 @@ router.post('/', function (req, res) {
             data: data
         })
             .then(function(response) {
-                var endTime = new Date().getTime()
-                var responseTime = new Date().getTime() - startTime;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 result = {
                     startTime: startTime,
                     endTime: endTime,
@@ -46,8 +46,8 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                var endTime = new Date().getTime()
-                var responseTime = new Date().getTime() - startTime;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
@@ -82,8 +82,8 @@ router.post('/', function (req, res) {
 
         axios.get(url)
             .then(function(response) {
-                var endTime = new Date().getTime()
-                var responseTime = new Date().getTime() - startTime;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 result = {
                     startTime: startTime,
                     endTime: endTime,
@@ -100,8 +100,8 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                var endTime = new Date().getTime()
-                var responseTime = new Date().getTime() - startTime;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
