@@ -46,7 +46,8 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                let responseTime = new Date().getTime() - start;
+                let endTime = new Date().getTime()
+                let responseTime = endTime - startTime;
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
