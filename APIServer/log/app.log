@@ -1,9 +1,6 @@
-[0mGET /api/v2/number [32m200 [0m3.766 ms - 13[0m
-[0mGET /api/v2/number [32m200 [0m0.384 ms - 13[0m
-[0mGET /api/v2/number [32m200 [0m0.198 ms - 13[0m
-[0mGET /api/v2/number [32m200 [0m0.174 ms - 12[0m
-[0mGET /api/v2/number [32m200 [0m0.201 ms - 12[0m
-[0mGET /api/v2/number [32m200 [0m0.261 ms - 12[0m
-[0mGET /api/v2/number [32m200 [0m0.617 ms - 13[0m
-[0mGET /api/v2/number [32m200 [0m0.192 ms - 13[0m
-[0mGET /api/v2/number [32m200 [0m0.223 ms - 13[0m
+[0mGET /api/v2/number [32m200 [0m3.273 ms - 26[0m
+[0mGET /api/v2/number [32m200 [0m0.535 ms - 26[0m
+[0mGET /api/v2/number [32m200 [0m0.209 ms - 26[0m
+[0mGET /api/v2/number [32m200 [0m0.203 ms - 26[0m
+[0mGET /api/v2/number [32m200 [0m0.235 ms - 26[0m
+[0mGET /api/v2/number [32m200 [0m0.275 ms - 25[0m
