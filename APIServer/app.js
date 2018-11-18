@@ -25,6 +25,7 @@ var apiAvgTime = require('./routes/api/avgTime');
 var apiSendScenario = require('./routes/api/sendScenario');
 var apiProject = require('./routes/api/project');
 var apiScenario = require('./routes/api/scenario');
+var apiTest = require('./routes/api/apitest');
 
 var hooking = require('./routes/api/hooking');
 
@@ -68,6 +69,7 @@ app.use('/api/v1/avgtime', apiAvgTime);
 app.use('/api/v1/send-scenario', apiSendScenario);
 app.use('/api/v1/project', apiProject);
 app.use('/api/v1/scenario', apiScenario);
+app.use('/api/v1/apitest', apiTest);
 
 app.use('/api/hooking', hooking);
 
