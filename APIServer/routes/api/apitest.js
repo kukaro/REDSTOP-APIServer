@@ -82,30 +82,32 @@ router.post('/', function (req, res) {
         // });
 
         axios.get(url)
-            .then(function (response) {
-
-                var responseTime = new Date().getTime() - start;
+            .then(function(response) {
+                var endTime = new Date().getTime()
+                var responseTime = new Date().getTime() - startTime;
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: response.status,
+                    data: response.data,
                     time: responseTime,
-                    size: response.headers['content-length'],
-                    data: response.data
+                    size: response.headers['content-length']
                 };
-
             })
-            .then(function(data){
-                console.log('data 부분임');
-                console.log(data);
+            .then(function(){
                 res.status(200).send({
                     msg : "테스트 성공!",
                     result : result
                 });
             })
             .catch(function (error) {
-                var responseTime = new Date().getTime() - start;
+                var endTime = new Date().getTime()
+                var responseTime = new Date().getTime() - startTime;
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: error.response.status,
                     data: null,
                     time: responseTime,
