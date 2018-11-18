@@ -31,8 +31,8 @@ router.post('/', function (req, res) {
                 let endTime = new Date().getTime()
                 let responseTime = endTime - startTime;
                 result = {
-                    startTime: response.startTime,
-                    endTime: response.endTime,
+                    startTime: startTime,
+                    endTime: endTime,
                     status: response.status,
                     data: response.data,
                     time: responseTime,
@@ -50,8 +50,8 @@ router.post('/', function (req, res) {
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
-                    startTime: response.startTime,
-                    endTime: response.endTime,
+                    startTime: startTime,
+                    endTime: endTime,
                     status: error.response.status,
                     data: null,
                     time: responseTime,
