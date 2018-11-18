@@ -10,6 +10,8 @@ var conf = require('./conf/conf');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api/index');
+var apiRouter2 = require('./routes/api/v2/index');
+
 
 var apiHeaderRouter = require('./routes/api/header');
 var apiListRouter = require('./routes/api/apiList');
@@ -52,6 +54,7 @@ app.use(logger({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/v1', apiRouter);
+app.use('/api/v2', apiRouter2);
 
 app.use('/api/header', apiHeaderRouter);
 app.use('/api/apiList', apiListRouter);
