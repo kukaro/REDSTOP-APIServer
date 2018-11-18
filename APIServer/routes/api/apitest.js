@@ -4,7 +4,6 @@ var axios = require('axios');
 
 // 테스트 결과 받아서 테스트 치고, 그 때의 결과 influxDB에 저장하고,
 router.post('/', function (req, res) {
-    console.log('일단 드러는 왔어');
     var url = req.body.url;
     var data = req.body["data"];
     var method = req.body["method"];
