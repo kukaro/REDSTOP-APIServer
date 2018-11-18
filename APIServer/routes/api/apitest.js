@@ -46,7 +46,6 @@ router.post('/', function (req, res) {
                 let responseTime = new Date().getTime() - start;
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
-                result.status = error.response.status;
                 result = {
                     status: error.response.status,
                     data: null,
