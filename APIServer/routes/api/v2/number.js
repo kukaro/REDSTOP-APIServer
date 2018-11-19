@@ -9,7 +9,12 @@ router.get('/', function(req, res) {
         .then(function(response) {
             console.log('response입니다.');
             console.log(Object.keys(response));
-            console.log(response.data);
+            // console.log(response.data);
+            return response.data
+        })
+        .then(function (data) {
+            console.log('넘어왔어여')
+            console.log(data)
         })
         .catch(function (error) {
             console.log('error입니다.');
