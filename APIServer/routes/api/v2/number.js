@@ -48,19 +48,34 @@ router.get('/', function (req, res) {
                             }
                         ).then(response => {
                             count++;
-
+                            responseTime += response.data.result.time;
                             console.log('응답 성공 : ' + count);
                             console.log(Object.keys(response.data.result));
                             if (count === MAXCOUNT) {
                                 makeData()
+                                res.status(200).send({
+                                    number: VUs,
+                                    number2: responseTime,
+                                    number3: failures,
+                                    number4: failuresSlashS,
+                                    number5: tps
+                                });
                             }
                         }).catch(err => {
                             count++;
                             failures++;
+                            responseTime += err.response.data.result.time;
                             console.log('응답 실패 : ' + count);
                             console.log(Object.keys(err.response.data.result));
                             if (count === MAXCOUNT) {
                                 makeData()
+                                res.status(200).send({
+                                    number: VUs,
+                                    number2: responseTime,
+                                    number3: failures,
+                                    number4: failuresSlashS,
+                                    number5: tps
+                                });
                             }
                         })
                     }
@@ -71,24 +86,26 @@ router.get('/', function (req, res) {
             console.log('error입니다.');
             console.log(error);
         });
-    var randVal = Math.random() * 50 + 1;
-    var randVal2 = Math.random() * 50 + 1;
-    var randVal3 = Math.random() * 50 + 1;
-    var randVal4 = Math.random() * 50 + 1;
-    var randVal5 = Math.random() * 50 + 1;
-
-    res.status(200).send({
-        number: Math.round(randVal),
-        number2: Math.round(randVal2),
-        number3: Math.round(randVal3),
-        number4: Math.round(randVal4),
-        number5: Math.round(randVal5)
-    });
+    // var randVal = Math.random() * 50 + 1;
+    // var randVal2 = Math.random() * 50 + 1;
+    // var randVal3 = Math.random() * 50 + 1;
+    // var randVal4 = Math.random() * 50 + 1;
+    // var randVal5 = Math.random() * 50 + 1;
+    //
+    // res.status(200).send({
+    //     number: Math.round(randVal),
+    //     number2: Math.round(randVal2),
+    //     number3: Math.round(randVal3),
+    //     number4: Math.round(randVal4),
+    //     number5: Math.round(randVal5)
+    // });
 });
 
 function makeData() {
     console.log('make data')
     failuresSlashS = failures / VUs;
+    tps = VUs/responseTime;
+    responseTime/= count;
     console.log('VUs : ' + VUs);
     console.log('responseTime : ' + responseTime);
     console.log('failures : ' + failures);
