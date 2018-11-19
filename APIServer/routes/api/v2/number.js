@@ -49,9 +49,15 @@ router.get('/', function (req, res) {
                         ).then(response => {
                             count++;
                             console.log('응답 성공 : ' + count);
+                            if(count===MAXCOUNT){
+                                makeData()
+                            }
                         }).catch(err => {
                             count++;
                             console.log('응답 실패 : ' + count);
+                            if(count===MAXCOUNT){
+                                makeData()
+                            }
                         })
                     }
                 }
@@ -75,5 +81,9 @@ router.get('/', function (req, res) {
         number5: Math.round(randVal5)
     });
 });
+
+function makeData(){
+
+}
 
 module.exports = router;
