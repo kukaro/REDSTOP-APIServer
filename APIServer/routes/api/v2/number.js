@@ -37,7 +37,7 @@ router.get('/', function (req, res) {
             }
             const MAXCOUNT = VUs * tmp;
             for (let atom of data) {
-                if(atom.type === 'api'){
+                if (atom.type === 'api') {
                     for (let i = 0; i < VUs; i++) {
                         axios.post(
                             'http://52.79.221.114:3000/api/v1/apitest',
@@ -48,16 +48,18 @@ router.get('/', function (req, res) {
                             }
                         ).then(response => {
                             count++;
+
                             console.log('응답 성공 : ' + count);
-                            console.log(Object.keys(response));
-                            if(count===MAXCOUNT){
+                            console.log(Object.keys(response.data));
+                            if (count === MAXCOUNT) {
                                 makeData()
                             }
                         }).catch(err => {
                             count++;
+                            failures++;
                             console.log('응답 실패 : ' + count);
-                            console.log(Object.keys(err));
-                            if(count===MAXCOUNT){
+                            console.log(Object.keys(err.response));
+                            if (count === MAXCOUNT) {
                                 makeData()
                             }
                         })
@@ -84,13 +86,13 @@ router.get('/', function (req, res) {
     });
 });
 
-function makeData(){
+function makeData() {
     console.log('make data')
-    console.log(VUs);
-    console.log(responseTime);
-    console.log(failures);
-    console.log(failuresSlashS);
-    console.log(tps);
+    console.log('VUs : ' + VUs);
+    console.log('responseTime : ' + responseTime);
+    console.log('failures : ' + failures);
+    console.log('failuresSlashS : ' + failuresSlashS);
+    console.log('tps : ' + tps);
 }
 
 module.exports = router;
