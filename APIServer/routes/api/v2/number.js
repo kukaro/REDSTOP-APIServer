@@ -49,14 +49,14 @@ router.get('/', function (req, res) {
                         ).then(response => {
                             count++;
                             console.log('응답 성공 : ' + count);
-                            console.log(response)
+                            console.log(Object.keys(response));
                             if(count===MAXCOUNT){
                                 makeData()
                             }
                         }).catch(err => {
                             count++;
                             console.log('응답 실패 : ' + count);
-                            console.log(err)
+                            console.log(Object.keys(err));
                             if(count===MAXCOUNT){
                                 makeData()
                             }
