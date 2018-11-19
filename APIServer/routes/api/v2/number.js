@@ -58,7 +58,7 @@ router.get('/', function (req, res) {
                             count++;
                             failures++;
                             console.log('응답 실패 : ' + count);
-                            console.log(Object.keys(err.response.data));
+                            console.log(Object.keys(err.response.data.result));
                             if (count === MAXCOUNT) {
                                 makeData()
                             }
