@@ -83,7 +83,7 @@ router.get('/', function (req, res) {
 });
 
 function makeData(){
-
+    console.log('hihi')
 }
 
 module.exports = router;
