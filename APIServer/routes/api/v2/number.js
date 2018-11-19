@@ -50,7 +50,7 @@ router.get('/', function (req, res) {
                             count++;
 
                             console.log('응답 성공 : ' + count);
-                            console.log(Object.keys(response.data));
+                            console.log(Object.keys(response.data.result));
                             if (count === MAXCOUNT) {
                                 makeData()
                             }
@@ -58,7 +58,7 @@ router.get('/', function (req, res) {
                             count++;
                             failures++;
                             console.log('응답 실패 : ' + count);
-                            console.log(Object.keys(err.response));
+                            console.log(Object.keys(err.response.data));
                             if (count === MAXCOUNT) {
                                 makeData()
                             }
@@ -88,6 +88,7 @@ router.get('/', function (req, res) {
 
 function makeData() {
     console.log('make data')
+    failuresSlashS = failures / VUs;
     console.log('VUs : ' + VUs);
     console.log('responseTime : ' + responseTime);
     console.log('failures : ' + failures);
