@@ -49,12 +49,14 @@ router.get('/', function (req, res) {
                         ).then(response => {
                             count++;
                             console.log('응답 성공 : ' + count);
+                            console.log(response)
                             if(count===MAXCOUNT){
                                 makeData()
                             }
                         }).catch(err => {
                             count++;
                             console.log('응답 실패 : ' + count);
+                            console.log(err)
                             if(count===MAXCOUNT){
                                 makeData()
                             }
@@ -84,6 +86,11 @@ router.get('/', function (req, res) {
 
 function makeData(){
     console.log('make data')
+    console.log(VUs);
+    console.log(responseTime);
+    console.log(failures);
+    console.log(failuresSlashS);
+    console.log(tps);
 }
 
 module.exports = router;
