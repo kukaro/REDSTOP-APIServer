@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
         .then(function(response) {
             console.log('response입니다.');
             console.log(Object.keys(response));
-            console.log(response);
+            console.log(response.data);
         })
         .catch(function (error) {
             console.log('error입니다.');
