@@ -7,7 +7,7 @@ router.post('/', function (req, res) {
     var url = req.body.url;
     var data = req.body["data"];
     var method = req.body["method"];
-    var start = new Date().getTime()
+    var startTime = new Date()
 
     var result = {};
 
@@ -28,8 +28,11 @@ router.post('/', function (req, res) {
             data: data
         })
             .then(function(response) {
-                var responseTime = new Date().getTime() - start;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: response.status,
                     data: response.data,
                     time: responseTime,
@@ -43,10 +46,13 @@ router.post('/', function (req, res) {
                 });
             })
             .catch(function (error) {
-                let responseTime = new Date().getTime() - start;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: error.response.status,
                     data: null,
                     time: responseTime,
@@ -75,30 +81,140 @@ router.post('/', function (req, res) {
         // });
 
         axios.get(url)
-            .then(function (response) {
-
-                var responseTime = new Date().getTime() - start;
+            .then(function(response) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: response.status,
+                    data: response.data,
                     time: responseTime,
-                    size: response.headers['content-length'],
-                    data: response.data
+                    size: response.headers['content-length']
                 };
-
             })
-            .then(function(data){
-                console.log('data 부분임');
-                console.log(data);
+            .then(function(){
                 res.status(200).send({
                     msg : "테스트 성공!",
                     result : result
                 });
             })
             .catch(function (error) {
-                let responseTime = new Date().getTime() - start;
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
                 console.log('error로 넘어옴 ㅎㅎ');
                 console.log(Object.keys(error.response));
                 result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: error.response.status,
+                    data: null,
+                    time: responseTime,
+                    size: 0
+                };
+                res.status(error.response.status).send({
+                    msg : "에러,",
+                    result : result
+                });
+            });
+    }else if (method === 'PUT') {
+        // axios.interceptors.response.use((response) => {
+        //     return response;
+        // }, function (error) {
+        //     // Do something with response error
+        //     console.log(error.response)
+        //     if (error.response.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     res.status(200).send({
+        //         msg : "테스트 실패..."
+        //     });
+        //
+        //     return Promise.reject(error.response);
+        //
+        // });
+
+        axios.put(url)
+            .then(function(response) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: response.status,
+                    data: response.data,
+                    time: responseTime,
+                    size: response.headers['content-length']
+                };
+            })
+            .then(function(){
+                res.status(200).send({
+                    msg : "테스트 성공!",
+                    result : result
+                });
+            })
+            .catch(function (error) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: error.response.status,
+                    data: null,
+                    time: responseTime,
+                    size: 0
+                };
+                res.status(error.response.status).send({
+                    msg : "에러,",
+                    result : result
+                });
+            });
+    }else if (method === 'DELETE') {
+        // axios.interceptors.response.use((response) => {
+        //     return response;
+        // }, function (error) {
+        //     // Do something with response error
+        //     console.log(error.response)
+        //     if (error.response.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     res.status(200).send({
+        //         msg : "테스트 실패..."
+        //     });
+        //
+        //     return Promise.reject(error.response);
+        //
+        // });
+
+        axios.delete(url)
+            .then(function(response) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: response.status,
+                    data: response.data,
+                    time: responseTime,
+                    size: response.headers['content-length']
+                };
+            })
+            .then(function(){
+                res.status(200).send({
+                    msg : "테스트 성공!",
+                    result : result
+                });
+            })
+            .catch(function (error) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
                     status: error.response.status,
                     data: null,
                     time: responseTime,
