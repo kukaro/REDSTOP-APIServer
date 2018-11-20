@@ -54,7 +54,7 @@ router.get('/', function (req, res) {
         '    </hashTree>\n' +
         '  </hashTree>\n' +
         '</jmeterTestPlan>';
-    fs.appendFile('/Users/easy/default2.jmx', contents, function (err) {
+    fs.appendFile('/default2.jmx', contents, function (err) {
         if (err){
             res.status(500).send({
                 success: false
