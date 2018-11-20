@@ -54,15 +54,26 @@ router.get('/', function (req, res) {
         '    </hashTree>\n' +
         '  </hashTree>\n' +
         '</jmeterTestPlan>';
-    fs.appendFile('/default2.jmx', contents, function (err) {
-        if (err){
-            res.status(500).send({
-                success: false
-            })
-        }
-        res.status(201).send({
-            success: true
-        })
+    // fs.appendFile('/default2.jmx', contents, function (err) {
+    //     if (err){
+    //         res.status(500).send({
+    //             success: false
+    //         })
+    //     }
+    //     res.status(201).send({
+    //         success: true
+    //     })
+    // });
+
+    fs.writeFile('default2.jmx', contents, function (err) {
+            if (err){
+                res.status(500).send({
+                    success: false
+                });
+            }
+            res.status(201).send({
+                success: true
+            });
     });
 
 });
