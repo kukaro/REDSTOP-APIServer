@@ -41,7 +41,7 @@ function parsingInfo2(info) {
         for(let j=0;j<temp.length;j++){
             // console.log("-@-@-@-@-@-" + j + "-@-@-@-@-");
             // console.log(temp[j]);
-            apis.push({"url": arr1[i], "method": temp[j]});
+            apis.push({"url": 'http://'+arr1[i], "method": temp[j]});
         }
     }
 
