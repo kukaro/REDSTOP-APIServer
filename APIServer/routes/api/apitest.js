@@ -117,6 +117,114 @@ router.post('/', function (req, res) {
                     result : result
                 });
             });
+    }else if (method === 'PUT') {
+        // axios.interceptors.response.use((response) => {
+        //     return response;
+        // }, function (error) {
+        //     // Do something with response error
+        //     console.log(error.response)
+        //     if (error.response.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     res.status(200).send({
+        //         msg : "테스트 실패..."
+        //     });
+        //
+        //     return Promise.reject(error.response);
+        //
+        // });
+
+        axios.put(url)
+            .then(function(response) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: response.status,
+                    data: response.data,
+                    time: responseTime,
+                    size: response.headers['content-length']
+                };
+            })
+            .then(function(){
+                res.status(200).send({
+                    msg : "테스트 성공!",
+                    result : result
+                });
+            })
+            .catch(function (error) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: error.response.status,
+                    data: null,
+                    time: responseTime,
+                    size: 0
+                };
+                res.status(error.response.status).send({
+                    msg : "에러,",
+                    result : result
+                });
+            });
+    }else if (method === 'DELETE') {
+        // axios.interceptors.response.use((response) => {
+        //     return response;
+        // }, function (error) {
+        //     // Do something with response error
+        //     console.log(error.response)
+        //     if (error.response.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     res.status(200).send({
+        //         msg : "테스트 실패..."
+        //     });
+        //
+        //     return Promise.reject(error.response);
+        //
+        // });
+
+        axios.delete(url)
+            .then(function(response) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: response.status,
+                    data: response.data,
+                    time: responseTime,
+                    size: response.headers['content-length']
+                };
+            })
+            .then(function(){
+                res.status(200).send({
+                    msg : "테스트 성공!",
+                    result : result
+                });
+            })
+            .catch(function (error) {
+                var endTime = new Date()
+                var responseTime = endTime.getTime() - startTime.getTime();
+                console.log('error로 넘어옴 ㅎㅎ');
+                console.log(Object.keys(error.response));
+                result = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    status: error.response.status,
+                    data: null,
+                    time: responseTime,
+                    size: 0
+                };
+                res.status(error.response.status).send({
+                    msg : "에러,",
+                    result : result
+                });
+            });
     }
     // res.status(200).send({
     //     msg : "테스트 성공!",
